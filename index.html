@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <nav class = "purple">
+        <div class = "nav-wrapper container">
+        <span class = "nav-header">Image Editor</span>
+            <ul class = "right image-save"> 
+                <button class = "btn btn-flat blue white-text" onclick = "saveImage()">
+                    Save
+                </button>
+                <button class = "btn btn-flat red white-text" onclick = "resetImage()">
+                    Reset
+                </button>
+            </ul>
+        </div>
+    </nav>
+    
+    <img id = "sourceImage" crossorigin = "anonymous">
+    
+    <div class = "image-preview">
+
+        <canvas id = "canvas" height = "0"></canvas>
+    </div>      
+
+    <div class = "container app">
+
+    <div class = "help-text center-align">
+        <h4>Please upload your image here to start editing.</h4>
+    </div>  
+
+    <div class = "image-controls">
+        <h5>Image Controls</h5>
+        <div class = "row">
+            <div class = "col s6">
+                <span class = "range-field">
+                    <lable for = "brightnessSlider">
+                        Brigthness
+                    </lable>
+                    <input id = "brightnessSlider"
+                           type = "range" value="100"
+                           min = "0" max = "300"
+                           onchange="applyFilter()">
+                </span>
+            </div>
+            <div class = "col s6">
+                <span class = "range-field">
+                    <lable for = "ContrastSlider">
+                        Contrast
+                    </lable>
+                    <input id = "contrastSlider"
+                           type = "range" value  = "100"
+                           min = "0" max = "200"
+                           onchange = "applyFilter()">
+                </span>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class = "col s6">
+                <span class = "range-field">
+                    <lable for = "grayscaleSlider">
+                        Grayscale
+                    </lable>
+                    <input id = "grayscaleSlider"
+                           type = "range" value = "0"
+                           min = "0" max = "100"
+                           onchange = "applyFilter()"> 
+                </span>
+            </div>
+            <div class = "col s6">
+                <span class = "range-field">
+                    <lable for = "saturationSlider">
+                        Saturation
+                    </lable>
+                    <input id = "saturationSlider"
+                           type = "range" value = "100"
+                           min =  "0" max = "300"
+                           onchange = "applyFilter()">
+                </span>
+            </div>     
+        </div>
+        <div class = "row">
+            <div class = "col s6">
+                <span class = "range-field">
+                    <lable for = "speiaSlider">
+                        Sepia
+                    </lable>
+                    <input id = "sepiaSlider"
+                           type = "range" value = "0"
+                           min = "0" max = "200"
+                           onchange = "applyFilter()">
+                </span>
+            </div>
+            <div class = "col s6">
+                <span class = "range-field">
+                    <lable for = "hueRotateSlider">
+                        Hue 
+                    </lable>
+                    <input id = "hueRotateSlider"
+                           type = "range" value = "0"
+                           min = "0" max = "360"
+                           onchange = "applyFilter()">
+                </span>
+            </div>   
+        </div>
+    </div>
+    
+    <div class = "preset-filters">
+        <h5>Preset Filters</h5>
+        <button class = "btn purple"
+                onclick = "brightenFilter()">
+                BRIGHTEN
+        </button>
+        <button class ="btn purple"
+                onclick = "bwFilter()">
+                BLACK AND WHITE 
+        </button>
+        <button class = "btn purple"
+                onclick = "funkyFilter()">
+                FUNKY
+        </button>
+        <button class = "btn purple"
+                onclick = "vintageFilter()">
+                VINTAGE            
+        </button>     
+    </div>
+
+    <div class = "file-controls">
+        <h5>File Controls</h5>
+
+        <a id = "link"></a>
+
+        <div class = "file-field input-field">
+            <div class = "btn purple">
+                <span>Upload Image</span>
+                <input type = "file" accept = "image/*"
+                       onchange = "uploadImage(event)">
+            </div>
+            <div class = "file-path-wrapper">
+                 <input class = "file-path" type = "text">  
+            </div>
+        </div>
+    </div>
+ </div>
+
+    <script src = "app.js"></script>
+
+</body>
+</html>   
